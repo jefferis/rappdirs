@@ -67,6 +67,7 @@
 user_data_dir <- function(appname = NULL, appauthor = appname, version = NULL, 
                           roaming = FALSE, expand = TRUE, os = get_os()) {
   if (expand) version <- expand_r_libs_specifiers(version)
+  if (is.null(appname)) { version <- NULL }
   switch(os, 
     win = file_path(win_path(ifelse(roaming, "roaming", "local")), appauthor, appname, version),
     mac = file_path("~/Library/Application Support", appname, version),
@@ -80,6 +81,7 @@ user_data_dir <- function(appname = NULL, appauthor = appname, version = NULL,
 user_config_dir <- function(appname = NULL, appauthor = appname, version = NULL, 
                             roaming = TRUE, expand = TRUE, os = get_os()) {
   if (expand) version <- expand_r_libs_specifiers(version)
+  if (is.null(appname)) { version <- NULL }
   switch(os, 
     win = file_path(win_path(ifelse(roaming, "roaming", "local")), appauthor, appname, version),
     mac = file_path("~/Library/Application Support", appname, version),
@@ -122,6 +124,7 @@ user_config_dir <- function(appname = NULL, appauthor = appname, version = NULL,
 site_data_dir <- function(appname = NULL, appauthor = appname, version = NULL, 
                           multipath = FALSE, expand = TRUE, os = get_os()) {
   if (expand) version <- expand_r_libs_specifiers(version)
+  if (is.null(appname)) { version <- NULL }
   switch(os,
     win = file_path(win_path("common"), appauthor, appname, version),
     mac = file_path("/Library/Application Support", appname, version),
@@ -135,6 +138,7 @@ site_data_dir <- function(appname = NULL, appauthor = appname, version = NULL,
 site_config_dir <- function(appname = NULL, appauthor = appname, version = NULL,
                             multipath = FALSE, expand = TRUE, os = get_os()) {
   if (expand) version <- expand_r_libs_specifiers(version)
+  if (is.null(appname)) { version <- NULL }
   switch(os,
     win = file_path(win_path("common"), appauthor, appname, version),
     mac = file_path("/Library/Application Support", appname, version),
