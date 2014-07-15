@@ -47,10 +47,9 @@
 #' @examples
 #' user_data_dir("rappdirs")
 #' user_config_dir("rappdirs", version="%p-platform/%v")
-#' user_config_dir("rappdirs", roaming=TRUE, os="win")
-#' user_config_dir("rappdirs", roaming=FALSE, os="win")
-#' user_config_dir("rappdirs", os="unix")
-#' user_config_dir("rappdirs", os="mac")
+#' # Relevant on Windows
+#' user_config_dir("rappdirs", roaming=TRUE)
+#' user_config_dir("rappdirs", roaming=FALSE)
 #' \dontrun{
 #' # you could try to use functions to store R libraries in a standard user directory
 #' # by using the following in your .Rprofile file
