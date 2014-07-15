@@ -5,10 +5,10 @@
 \title{Return full path to the user-shared data dir for this application.}
 \usage{
 site_data_dir(appname = NULL, appauthor = appname, version = NULL,
-  multipath = FALSE, expand = TRUE, os = get_os())
+  multipath = FALSE, expand = TRUE)
 
 site_config_dir(appname = NULL, appauthor = appname, version = NULL,
-  multipath = FALSE, expand = TRUE, os = get_os())
+  multipath = FALSE, expand = TRUE)
 }
 \arguments{
 \item{multipath}{is an optional parameter only applicable to *nix
@@ -30,10 +30,6 @@ is not NULL.}
 
 \item{expand}{If TRUE (the default) will expand the \code{R_LIBS} specifiers with their equivalents.
      See \code{\link{R_LIBS}} for list of all possibly specifiers.}
-
-\item{os}{Operating system which we should create directory for,
-if NULL (the default) will compute the operating system using R's built in variables/functions.
-Values are "win", "mac", "unix".}
 }
 \description{
 \code{site_data_dir} returns full path to the user-shared data dir for this application.

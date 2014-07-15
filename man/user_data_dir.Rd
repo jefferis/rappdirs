@@ -5,10 +5,10 @@
 \title{Return path to user data directories.}
 \usage{
 user_data_dir(appname = NULL, appauthor = appname, version = NULL,
-  roaming = FALSE, expand = TRUE, os = get_os())
+  roaming = FALSE, expand = TRUE)
 
 user_config_dir(appname = NULL, appauthor = appname, version = NULL,
-  roaming = TRUE, expand = TRUE, os = get_os())
+  roaming = TRUE, expand = TRUE)
 }
 \arguments{
 \item{appname}{is the name of application. If NULL, just the system
@@ -30,10 +30,6 @@ a Windows network setup for roaming profiles, this user data will be
 sync'd on login. See
 \url{http://technet.microsoft.com/en-us/library/cc766489(WS.10).aspx}
 for a discussion of issues.}
-
-\item{os}{Operating system which we should create directory for,
-if NULL (the default) will compute the operating system using R's built in variables/functions.
-Values are "win", "mac", "unix".}
 
 \item{expand}{If TRUE (the default) will expand the \code{R_LIBS} specifiers with their equivalents.
      See \code{\link{R_LIBS}} for list of all possibly specifiers.}

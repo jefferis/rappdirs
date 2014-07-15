@@ -41,9 +41,6 @@
 #'     sync'd on login. See
 #'     \url{http://technet.microsoft.com/en-us/library/cc766489(WS.10).aspx}
 #'     for a discussion of issues.
-#' @param os Operating system which we should create directory for,
-#'     if NULL (the default) will compute the operating system using R's built in variables/functions.
-#'     Values are "win", "mac", "unix".
 #' @param expand If TRUE (the default) will expand the \code{R_LIBS} specifiers with their equivalents.
 #'      See \code{\link{R_LIBS}} for list of all possibly specifiers.
 #'
@@ -65,13 +62,13 @@
 
 #' @export
 user_data_dir <- function(appname = NULL, appauthor = appname, version = NULL,
-                          roaming = FALSE, expand = TRUE, os = get_os()) {
+                          roaming = FALSE, expand = TRUE) {
   if (expand) version <- expand_r_libs_specifiers(version)
   if (is.null(appname) && !is.null(version)) {
     version <- NULL
     warning("version is ignored when appname is null")
   }
-  switch(os,
+  switch(get_os(),
     win = file_path(win_path(ifelse(roaming, "roaming", "local")), appauthor, appname, version),
     mac = file_path("~/Library/Application Support", appname, version),
     unix = file_path(Sys.getenv("XDG_DATA_HOME", "~/.local/share"),
@@ -82,13 +79,13 @@ user_data_dir <- function(appname = NULL, appauthor = appname, version = NULL,
 #' @rdname user_data_dir
 #' @export
 user_config_dir <- function(appname = NULL, appauthor = appname, version = NULL,
-                            roaming = TRUE, expand = TRUE, os = get_os()) {
+                            roaming = TRUE, expand = TRUE) {
   if (expand) version <- expand_r_libs_specifiers(version)
   if (is.null(appname) && !is.null(version)) {
     version <- NULL
     warning("version is ignored when appname is null")
   }
-  switch(os,
+  switch(get_os(),
     win = file_path(win_path(ifelse(roaming, "roaming", "local")), appauthor, appname, version),
     mac = file_path("~/Library/Application Support", appname, version),
     unix = file_path(Sys.getenv("XDG_CONFIG_HOME", "~/.config"),
@@ -128,13 +125,13 @@ user_config_dir <- function(appname = NULL, appauthor = appname, version = NULL,
 #' Do not use this on Windows. See the note above for why.
 #' @export
 site_data_dir <- function(appname = NULL, appauthor = appname, version = NULL,
-                          multipath = FALSE, expand = TRUE, os = get_os()) {
+                          multipath = FALSE, expand = TRUE) {
   if (expand) version <- expand_r_libs_specifiers(version)
   if (is.null(appname) && !is.null(version)) {
     version <- NULL
     warning("version is ignored when appname is null")
   }
-  switch(os,
+  switch(get_os(),
     win = file_path(win_path("common"), appauthor, appname, version),
     mac = file_path("/Library/Application Support", appname, version),
     unix = file_path_site_unix(Sys.getenv("XDG_DATA_DIRS", "/usr/local/share:/usr/share"),
@@ -145,13 +142,13 @@ site_data_dir <- function(appname = NULL, appauthor = appname, version = NULL,
 #' @rdname site_data_dir
 #' @export
 site_config_dir <- function(appname = NULL, appauthor = appname, version = NULL,
-                            multipath = FALSE, expand = TRUE, os = get_os()) {
+                            multipath = FALSE, expand = TRUE) {
   if (expand) version <- expand_r_libs_specifiers(version)
   if (is.null(appname) && !is.null(version)) {
     version <- NULL
     warning("version is ignored when appname is null")
   }
-  switch(os,
+  switch(get_os(),
     win = file_path(win_path("common"), appauthor, appname, version),
     mac = file_path("/Library/Application Support", appname, version),
     unix = file_path_site_unix(Sys.getenv("XDG_CONFIG_DIRS", "/etc/xdg"),

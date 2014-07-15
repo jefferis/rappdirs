@@ -28,13 +28,13 @@
 #'   user_log_dir()
 #' @export
 user_log_dir <- function(appname = NULL, appauthor = appname, version = NULL,
-                         opinion = TRUE, expand = TRUE, os = get_os()) {
+                         opinion = TRUE, expand = TRUE) {
   if (expand) version <- expand_r_libs_specifiers(version)
   if (is.null(appname) && !is.null(version)) {
     version <- NULL
     warning("version is ignored when appname is null")
   }
-  switch(os,
+  switch(get_os(),
     win = file_path(win_path("local"), appauthor, appname, version,
       if (opinion) "Logs"),
     mac = file_path("~/Library/Logs", appname, version),

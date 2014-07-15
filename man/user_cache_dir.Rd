@@ -4,7 +4,7 @@
 \title{Return full path to the user-specific cache dir for this application.}
 \usage{
 user_cache_dir(appname = NULL, appauthor = appname, version = NULL,
-  opinion = TRUE, expand = TRUE, os = get_os())
+  opinion = TRUE, expand = TRUE)
 }
 \arguments{
 \item{opinion}{(logical) can be \code{FALSE} to disable the appending of
@@ -25,10 +25,6 @@ is not NULL.}
 
 \item{expand}{If TRUE (the default) will expand the \code{R_LIBS} specifiers with their equivalents.
      See \code{\link{R_LIBS}} for list of all possibly specifiers.}
-
-\item{os}{Operating system which we should create directory for,
-if NULL (the default) will compute the operating system using R's built in variables/functions.
-Values are "win", "mac", "unix".}
 }
 \description{
 Typical user cache directories are:

@@ -40,13 +40,13 @@
 #' }
 #' @export
 user_cache_dir <- function(appname = NULL, appauthor = appname, version = NULL,
-                           opinion = TRUE, expand = TRUE, os = get_os()) {
+                           opinion = TRUE, expand = TRUE) {
   if (expand) version <- expand_r_libs_specifiers(version)
   if (is.null(appname) && !is.null(version)) {
     version <- NULL
     warning("version is ignored when appname is null")
   }
-  switch(os,
+  switch(get_os(),
     win = file_path(win_path("local"), appauthor, appname, version,
       if (opinion) "Cache"),
     mac = file_path("~/Library/Caches", appname, version),
