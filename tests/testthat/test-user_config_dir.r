@@ -14,16 +14,16 @@ test_that("user_config_dir works as expected", {
   } else if(os=='win'){
     if (!is.na(Sys.getenv("APPDATA", unset=NA))) {
       expect_equal(user_config_dir("R", roaming=TRUE),
-                   file.path(Sys.getenv("APPDATA"), "R", "R"))
+                   file_path(Sys.getenv("APPDATA"), "R", "R"))
     }
     if (is.na(Sys.getenv("LOCALAPPDATA", unset=NA))) {
       if (!is.na(Sys.getenv("USERPROFILE", unset=NA))) {
         expect_equal(user_config_dir("R", roaming=FALSE),
-                     file.path(Sys.getenv("USERPROFILE"), "Local Settings", "Application Data", "R", "R"))
+                     file_path(Sys.getenv("USERPROFILE"), "Local Settings", "Application Data", "R", "R"))
       }
     } else {
       expect_equal(user_config_dir("R", roaming=FALSE),
-                   file.path(Sys.getenv("LOCALAPPDATA"), "R", "R"))
+                   file_path(Sys.getenv("LOCALAPPDATA"), "R", "R"))
     }
   }
 })
