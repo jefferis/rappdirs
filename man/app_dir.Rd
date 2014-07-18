@@ -4,7 +4,7 @@
 \title{Convenience wrapper for getting app dirs.}
 \usage{
 app_dir(appname = NULL, appauthor = appname, version = NULL,
-  expand = TRUE, os = get_os())
+  expand = TRUE)
 }
 \arguments{
 \item{appname}{is the name of application. If NULL, just the system
@@ -22,10 +22,6 @@ is not NULL.}
 
 \item{expand}{If TRUE (the default) will expand the \code{R_LIBS} specifiers with their equivalents.
      See \code{\link{R_LIBS}} for list of all possibly specifiers.}
-
-\item{os}{Operating system which we should create directory for,
-if NULL (the default) will compute the operating system using R's built in variables/functions.
-Values are "win", "mac", "unix".}
 }
 \description{
 Has methods:
